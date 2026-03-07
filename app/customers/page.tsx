@@ -40,17 +40,17 @@ export default function CustomersPage() {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>UPI</th>
+          <th style={{padding:10}}>Name</th>
+          <th style={{padding:10}}>Phone</th>
+          <th style={{padding:10}}>UPI</th>
         </tr>
       </thead>
       <tbody>
         {customers.map((customer) => (
           <tr key={customer.id}>
-            <td>{customer.name}</td>
-            <td>{customer.phone}</td>
-            <td>{customer.upi}</td>
+            <td style={{padding:10}}>{customer.name}</td>
+            <td style={{padding:10}}>{customer.phone}</td>
+            <td style={{padding:10}}>{customer.upi}</td>
           </tr>
         ))}
       </tbody>
