@@ -44,7 +44,12 @@ export default function PaymentsPage() {
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                 />
-                <button onClick={recordPayment}>Record Payment</button> 
+                <button 
+                    style={{padding:10, backgroundColor:"blue", color:"white", border:"none", cursor:"pointer"}}
+                    onClick={recordPayment}
+                >
+                Record Payment
+                </button>
             </div>
             <table>
                 <thead>
