@@ -28,7 +28,7 @@ export default function PaymentsPage() {
         const { data, error } = await supabase.from("payments").insert([
             {
                 invoice_id:invoiceID, 
-                amount:amount, 
+                amount:Number(amount), 
                 payment_method:"upi"
             }
         ])
