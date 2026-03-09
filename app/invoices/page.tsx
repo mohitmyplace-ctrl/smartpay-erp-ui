@@ -1,8 +1,8 @@
-import {    QRCodeSVG   } from "qrcode.react"
 "use client"
 
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabaseClient"
+import { QRCodeSVG } from "qrcode.react"
 
 export default function InvoicesPage() {
     const [invoices, setInvoices] = useState<any[]>([])
@@ -63,7 +63,7 @@ export default function InvoicesPage() {
                             <td style={{padding:10}}>{inv.status}</td>
                             <td style={{padding:10}}>
                                 <QRCodeSVG
-                                    value={'upi://pay?pa=test@upi@pn=SmartPay&am=${inv.amount}&cu=INR'}
+                                    value={`upi://pay?pa=test@upi&pn=SmartPay&am=${inv.amount}&cu=INR`}
                                     size={80}
                                 />
                             </td>
