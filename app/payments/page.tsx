@@ -14,13 +14,22 @@ export default function PaymentsPage() {
     }
     
     async function recordPayment(){
-        await supabase.from("payments").insert([
+        console.log("Recording payment for invoice", invoiceID, "amount", amount)
+        const { data, error } = await supabase.from("payments").insert([
             {
                 invoice_id:invoiceID, 
                 amount:amount, 
                 payment_method:"upi"
             }
         ])
+        if(error){
+            console.error("Error recording payment", error)
+            return
+        }
+        else{
+            console.log("Payment recorded", data)
+        }
+
         // update invoice status to PAID
         await supabase.from("invoices").update({status:"PAID"}).eq("id", invoiceID)
         setInvoiceID("")
