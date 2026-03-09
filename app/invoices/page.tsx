@@ -1,3 +1,4 @@
+import QRCode from "qrcode.react"
 "use client"
 
 import { useEffect, useState } from "react"
@@ -51,6 +52,7 @@ export default function InvoicesPage() {
                         <th style={{padding:10}}>Invoice</th>
                         <th style={{padding:10}}>Amount</th>
                         <th style={{padding:10}}>Status</th>
+                        <th style={{padding:10}}>Pay on QR Code</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,6 +61,12 @@ export default function InvoicesPage() {
                             <td style={{padding:10}}>{inv.invoice_number}</td>
                             <td style={{padding:10}}>{inv.amount}</td>
                             <td style={{padding:10}}>{inv.status}</td>
+                            <td style={{padding:10}}>
+                                <QRCode
+                                    value={'upi://pay?pa=test@upi@pn=SmartPay&am=${inv.amount}&cu=INR'}
+                                    size={80}
+                                />
+                            </td>
                         </tr>
                     ))}
                 </tbody>
