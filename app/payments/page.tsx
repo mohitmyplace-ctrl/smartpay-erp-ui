@@ -21,6 +21,8 @@ export default function PaymentsPage() {
                 payment_method:"upi"
             }
         ])
+        // update invoice status to PAID
+        await supabase.from("invoices").update({status:"PAID"}).eq("id", invoiceID)
         setInvoiceID("")
         setAmount("")
         loadPayments()
