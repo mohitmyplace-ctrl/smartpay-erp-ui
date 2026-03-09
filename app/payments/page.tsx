@@ -7,12 +7,22 @@ export default function PaymentsPage() {
     const [payments, setPayments] = useState<any[]>([])
     const [invoiceID, setInvoiceID] = useState("")
     const [amount, setAmount] = useState("")
+    const [invoices, setInvoices] = useState<any[]>([])
 
     async function loadPayments() {
         const { data } = await supabase.from("payments").select("*")
         setPayments(data || [])
     }
-    
+
+    async function loadInvoices() {
+        const { data } = await supabase.from("invoices").select("*")
+        setInvoices(data || [])
+    }
+    useEffect(() => {
+        loadPayments()
+        loadInvoices()
+    }, [])
+
     async function recordPayment(){
         console.log("Recording payment for invoice", invoiceID, "amount", amount)
         const { data, error } = await supabase.from("payments").insert([
@@ -47,6 +57,12 @@ export default function PaymentsPage() {
                     value={invoiceID}
                     onChange={(e) => setInvoiceID(e.target.value)}
                 />
+                <option value="">Select Invoice</option>
+                {invoices.map((inv) => (
+                    <option key={inv.id} value={inv.id}>
+                        {inv.invoice_number}
+                    </option>
+                ))}
                 <input
                     style={{border:"1px solid gray", padding:8, marginRight:10}}
                     placeholder="Amount" 
