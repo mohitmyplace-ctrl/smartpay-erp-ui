@@ -27,11 +27,19 @@ export default function InvoicesPage() {
     }, [])
     
     return (
-        <div style={{ padding: 40 }}>
-            Invoices
+        <div style={{ padding: 40 }}> <h1>Invoices</h1>
+            
             <div style={{ marginBottom: 20 }}>
-                <input placeholder="Invoice Number" value={invoiceNumber} onChange={e => setInvoiceNumber(e.target.value)} />
-                <input placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} />
+                <input
+                    placeholder="Invoice Number" 
+                    value={invoiceNumber}
+                    onChange={e => setInvoiceNumber(e.target.value)}
+                />
+                <input
+                    placeholder="Amount" 
+                    value={amount}
+                    onChange={e => setAmount(e.target.value)}
+                />
                 <button onClick={createInvoice}>Create Invoice</button>
             </div>
             
@@ -44,11 +52,11 @@ export default function InvoicesPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {invoices.map((invoice) => (
-                        <tr key={invoice.id}>
-                            <td style={{padding:10}}>{invoice.invoice_number}</td>
-                            <td style={{padding:10}}>{invoice.amount}</td>
-                            <td style={{padding:10}}>{invoice.status}</td>
+                    {invoices.map((inv) => (
+                        <tr key={inv.id}>
+                            <td style={{padding:10}}>{inv.invoice_number}</td>
+                            <td style={{padding:10}}>{inv.amount}</td>
+                            <td style={{padding:10}}>{inv.status}</td>
                         </tr>
                     ))}
                 </tbody>
