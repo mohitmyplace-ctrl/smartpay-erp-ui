@@ -15,7 +15,7 @@ export default function InvoicesPage() {
 
     async function createInvoice(){
         await supabase.from("invoices").insert([
-            {invoice_number:invoiceNumber, amount:amount, status:"pending"},
+            {invoice_number:invoiceNumber, amount:amount, status:"pending"}
         ])
         setAmount("")
         setInvoiceNumber("")
@@ -33,12 +33,12 @@ export default function InvoicesPage() {
                 <input
                     placeholder="Invoice Number" 
                     value={invoiceNumber}
-                    onChange={e => setInvoiceNumber(e.target.value)}
+                    onChange={(e) => setInvoiceNumber(e.target.value)}
                 />
                 <input
                     placeholder="Amount" 
                     value={amount}
-                    onChange={e => setAmount(e.target.value)}
+                    onChange={(e) => setAmount(e.target.value)}
                 />
                 <button onClick={createInvoice}>Create Invoice</button>
             </div>
