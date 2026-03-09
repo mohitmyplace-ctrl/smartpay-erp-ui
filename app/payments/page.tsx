@@ -1,4 +1,4 @@
-"use client"
+"use client" 
 
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabaseClient"
@@ -51,13 +51,21 @@ export default function PaymentsPage() {
         <div>
             <h1>Payments</h1>
             <div style={{marginBottom:20}}>
-                <input
+                
+                <select
                     style={{border:"1px solid gray", padding:8, marginRight:10}}
-                    placeholder="Invoice"
                     value={invoiceID}
                     onChange={(e) => setInvoiceID(e.target.value)}
-                />
+                >
+                    <option value="">Select Invoice</option>
+                    {invoices.map((inv) => (
+                        <option key={inv.id} value={inv.id}>
+                            {inv.invoice_number}
+                        </option>
+                    ))}
+                </select>
                 <option value="">Select Invoice</option>
+                
                 {invoices.map((inv) => (
                     <option key={inv.id} value={inv.id}>
                         {inv.invoice_number}
