@@ -31,11 +31,13 @@ export default function InvoicesPage() {
             
             <div style={{ marginBottom: 20 }}>
                 <input
+                    style={{border:"1px solid gray", padding:8, marginRight:10}}
                     placeholder="Invoice Number" 
                     value={invoiceNumber}
                     onChange={(e) => setInvoiceNumber(e.target.value)}
                 />
                 <input
+                    style={{border:"1px solid gray", padding:8, marginRight:10}}
                     placeholder="Amount" 
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
